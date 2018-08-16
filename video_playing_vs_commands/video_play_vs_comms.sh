@@ -107,14 +107,13 @@ fi
 SKIP_START_OPTS="-ss"
 SKIP_LENGTH_OPTS="-endpos"
 
-# The following file name is the one assigned as a default to the
-# trailer available at
-# http://www.youtube.com/watch?v=8-_9n5DtKOc
-# when it is downloaded. For convenience, a copy of the video is
-# already present in this directory. In spite of the file name, it is
-# a 720p video (higher resolution are apparently available only withou
-# audio).
-VIDEO_FNAME="$CURDIR/WALL-E HD 1080p Trailer.mp4"
+# This file is downloaded using:
+#   org.youtubedl.YouTubeDl -f 271+171  http://www.youtube.com/watch?v=8-_9n5DtKOc
+# The format arguments arrange for it to be VP9+Vorbis in a WebM container,
+# which is supported by the ffmpeg configuration in Endless OS. This allows you
+# to install just the mplayer binary from Debian Stretch. The mp4 file originally
+# used in this benchmark is 720p, despite its name.
+VIDEO_FNAME="$CURDIR/WALL-E HD 1080p Trailer.webm"
 # The following parameters let the playback of the trailer start a
 # few seconds before the most demanding portion of the video.
 SKIP_START="00:01:32"

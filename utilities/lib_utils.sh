@@ -126,7 +126,7 @@ function enable_X_access_and_test_cmd {
 
 		$COMMAND >comm_out 2>&1
 		COM_OUT=$?
-		fail_str=$(egrep -i "fail|error|can\'t open display" comm_out)
+		fail_str=$(egrep -i "fail|error|can\'t open display" comm_out | grep -v canberra)
 		if [[ $COM_OUT -ne 0 || "$fail_str" != "" ]]; then
 			continue
 		fi

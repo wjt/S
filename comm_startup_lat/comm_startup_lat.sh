@@ -317,7 +317,9 @@ else
     PATH_TO_CMD=$(dirname $(which $SHORTNAME))
 
     # put into BACKING_DEV the backing device for $PATH_TO_CMD
-    find_dev_for_dir $PATH_TO_CMD
+    # find_dev_for_dir $PATH_TO_CMD
+    # The overlay mounted over /usr breaks looking up the backing device. TODO: detect this rather than hacking it.
+    BACKING_DEV=sda
 
     if [[ "$BACKING_DEV" != "$DEV" ]]; then
 	echo Command exec is on a different device \($BACKING_DEV\)

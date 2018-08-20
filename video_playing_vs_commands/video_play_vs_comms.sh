@@ -23,7 +23,7 @@ fi
 
 UTIL_DIR=`cd ../utilities; pwd`
 
-sched=${1-bfq}
+sched=${1-cur-sched}
 NUM_READERS=${2-10}
 NUM_WRITERS=${3-0}
 RW_TYPE=${4-seq}
@@ -36,7 +36,7 @@ MAXRATE=${9-4000} # maximum total sequential write rate for which the
 		  # unresponsive under bfq with a 90 MB/s hard disk
 		  # (see comm_startup_lat script)
 
-VERBOSITY=${10}
+VERBOSITY=verbose
 
 if [[ "$VERBOSITY" == verbose ]]; then
     REDIRECT=/dev/stdout

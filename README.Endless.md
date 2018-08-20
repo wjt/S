@@ -13,6 +13,12 @@
     sudo ./comm_startup_lat.sh  '' 1 1 seq  5 'xterm /bin/true' . 120 0.07 '' verbose
     sudo ./comm_startup_lat.sh  '' 2 2 seq  5 'xterm /bin/true' . 120 0.07 '' verbose
 
+To benchmark LibreOffice startup, use something like this:
+
+    sudo ./comm_startup_lat.sh  '' 2 0 seq  5 'flatpak run --no-a11y-bus org.libreoffice.LibreOffice --terminate_after_init' . 240 '' '' verbose
+
+`--no-a11y-bus` is needed to work around some Flatpak bug when running apps under `sudo` that I haven't tracked down yet. Notice the third param (number of writer) is 0, and the 4th-from-last param (timeout) is 240: LibreOffice takes *ages* to start under heavy read load, and with CFQ, under heavy write load, LibreOffice still hadn't started after 8 minutes and I gave up.
+
 I also used this tool to compare base latency with latency while performing some external workload:
 
     # determine base latency
